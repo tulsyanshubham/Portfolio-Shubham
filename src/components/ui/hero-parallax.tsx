@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     motion,
     useScroll,
@@ -26,17 +26,31 @@ export const HeroParallax = ({
         target: ref,
         offset: ["start start", "end start"],
     });
+    const [innerWidth, setInnerWidth] = useState(0);
+    useEffect(() => {
+        setInnerWidth(window.innerWidth);
+      }, []);
 
     const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
-    const translateX = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, 1000]),
-        springConfig
-    );
-    const translateXReverse = useSpring(
-        useTransform(scrollYProgress, [0, 1], [0, -1000]),
-        springConfig
-    );
+    const translateX = innerWidth > 700 ?
+        useSpring(
+            useTransform(scrollYProgress, [0, 1], [0, 1000]),
+            springConfig
+        ) :
+        useSpring(
+            useTransform(scrollYProgress, [0, 1], [0, 500]),
+            springConfig
+        );
+    const translateXReverse = innerWidth > 700 ?
+        useSpring(
+            useTransform(scrollYProgress, [0, 1], [0, -1000]),
+            springConfig
+        ) :
+        useSpring(
+            useTransform(scrollYProgress, [0, 1], [0, -500]),
+            springConfig
+        );
     const rotateX = useSpring(
         useTransform(scrollYProgress, [0, 0.2], [15, 0]),
         springConfig
@@ -49,14 +63,19 @@ export const HeroParallax = ({
         useTransform(scrollYProgress, [0, 0.2], [20, 0]),
         springConfig
     );
-    const translateY = useSpring(
-        useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
-        springConfig
-    );
+    const translateY = innerWidth > 700 ?
+        useSpring(
+            useTransform(scrollYProgress, [0, 0.2], [-700, 300]),
+            springConfig
+        ) :
+        useSpring(
+            useTransform(scrollYProgress, [0, 0.2], [-500, 50]),
+            springConfig
+        );
     return (
         <div
             ref={ref}
-            className="h-[200vh] lg:h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            className="h-[150vh] lg:h-[310vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
         >
             <Header />
             <motion.div
@@ -101,20 +120,23 @@ export const HeroParallax = ({
 };
 
 export const Header = () => {
-    const words = ["Full-Stack-Engineer", "Web-Developer", "Web-Designer"];
+    const words = ["Full-Stack-Developer","Software-Engineer","UI/UX-Designer","Problem-Solver"];
     return (
         <div className="max-w-7xl relative mx-auto py-20 md:py-10 px-4 w-full left-0 top-0 flex flex-col items-center justify-center">
-            <h1 className="text-4xl md:text-8xl font-bold dark:text-white text-center">
+            <h1 className="text-4xl md:text-8xl font-bold dark:text-white text-center z-10">
                 Shubham Tulsyan
             </h1>
-            <h2 className="text-2xl md:text-5xl font-bold">
+            <h2 className="text-2xl md:text-5xl font-bold z-10">
                 <FlipWords words={words} /> <br />
             </h2>
-            <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 text-center">
-                Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving
+            <p className="max-w-2xl text-base md:text-xl mt-2 md:mt-8 dark:text-neutral-200 text-center z-10">
+                Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving.
             </p>
+            <h2 className="text-xl md:text-3xl text-teal-600 font-semibold tracking-wide uppercase text-center mt-10 z-10">
+                Here's what I have learned and built so far.
+            </h2>
             <p>
-                
+
             </p>
         </div>
     );
@@ -139,7 +161,7 @@ export const ProductCard = ({
                 y: -20,
             }}
             key={product.title}
-            className="group/product h-32 w-[8rem] lg:h-96 lg:w-[30rem] relative flex-shrink-0"
+            className="group/product h-32 w-[10rem] lg:h-96 lg:w-[29rem] relative flex-shrink-0"
         >
             <Image
                 src={product.thumbnail}
@@ -149,7 +171,7 @@ export const ProductCard = ({
                 alt={product.title}
             />
             <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-            <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+            <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-xl sm:text-4xl text-white">
                 {product.title}
             </h2>
         </motion.div>
