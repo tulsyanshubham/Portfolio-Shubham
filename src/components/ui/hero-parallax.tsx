@@ -8,7 +8,6 @@ import {
     MotionValue,
 } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { FlipWords } from "./flip-words";
 
 export const HeroParallax = ({
@@ -16,7 +15,6 @@ export const HeroParallax = ({
 }: {
     products: {
         title: string;
-        link: string;
         thumbnail: string;
     }[];
 }) => {
@@ -103,17 +101,20 @@ export const HeroParallax = ({
 };
 
 export const Header = () => {
-    const words = ["Web-Developer", "Web-Designer", "Full-Stack-Engineer"];
+    const words = ["Full-Stack-Engineer", "Web-Developer", "Web-Designer"];
     return (
         <div className="max-w-7xl relative mx-auto py-20 md:py-10 px-4 w-full left-0 top-0 flex flex-col items-center justify-center">
             <h1 className="text-4xl md:text-8xl font-bold dark:text-white text-center">
                 Shubham Tulsyan
             </h1>
-            <h2 className="text-3xl md:text-5xl font-bold">
+            <h2 className="text-2xl md:text-5xl font-bold">
                 <FlipWords words={words} /> <br />
             </h2>
             <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200 text-center">
                 Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving
+            </p>
+            <p>
+                
             </p>
         </div>
     );
@@ -125,7 +126,6 @@ export const ProductCard = ({
 }: {
     product: {
         title: string;
-        link: string;
         thumbnail: string;
     };
     translate: MotionValue<number>;
@@ -141,18 +141,13 @@ export const ProductCard = ({
             key={product.title}
             className="group/product h-32 w-[8rem] lg:h-96 lg:w-[30rem] relative flex-shrink-0"
         >
-            <Link
-                href={product.link}
-                className="block group-hover/product:shadow-2xl "
-            >
-                <Image
-                    src={product.thumbnail}
-                    height="600"
-                    width="600"
-                    className="object-contain object-left-top absolute h-full w-full inset-0"
-                    alt={product.title}
-                />
-            </Link>
+            <Image
+                src={product.thumbnail}
+                height="600"
+                width="600"
+                className="object-contain object-left-top absolute h-full w-full inset-0"
+                alt={product.title}
+            />
             <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
             <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
                 {product.title}
