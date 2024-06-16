@@ -12,20 +12,20 @@ export const Tech = [
     thumbnail: "https://i.ibb.co/SwQC1vF/express.png",
   },
   {
+    title: "Typescript",
+    thumbnail: "https://i.ibb.co/G9vx6Cs/Typescript.png",
+  },
+  {
     title: "Git",
     thumbnail: "https://i.ibb.co/jD6vyDC/git.png",
   },
   {
-    title: "C++",
-    thumbnail: "https://i.ibb.co/R7QZfCt/c.png",
+    title: "Github",
+    thumbnail: "https://i.ibb.co/HBLrjTV/github.png",
   },
   {
     title: "MySQL",
     thumbnail: "https://i.ibb.co/QbzQkh4/mysql.png",
-  },
-  {
-    title: "Github",
-    thumbnail: "https://i.ibb.co/HBLrjTV/github.png",
   },
   {
     title: "React",
@@ -60,8 +60,8 @@ export const Tech = [
     thumbnail: "https://i.ibb.co/5xVm5ST/vite.png",
   },
   {
-    title: "Typescript",
-    thumbnail: "https://i.ibb.co/G9vx6Cs/Typescript.png",
+    title: "C++",
+    thumbnail: "https://i.ibb.co/R7QZfCt/c.png",
   },
   {
     title: "Postman",
