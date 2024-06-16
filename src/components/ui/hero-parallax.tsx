@@ -157,6 +157,7 @@ export const HeroParallax = ({
                         <div className="flex flex-wrap items-center justify-center">
                             {Tech.map((tech) => (
                                 <Image
+                                    key={tech.title}
                                     src={tech.thumbnail}
                                     alt={tech.title}
                                     height="50"
@@ -194,14 +195,14 @@ export const Header = () => {
                 {Icons.map((icon) => (
                     <Link href={icon.url} key={icon.title} target="_blank">
                         <Button className="rounded-full p-6 mx-2 bg-transparent" variant="outline">
-                        <Image
-                            src={icon.thumbnail}
-                            alt="arrow-down"
-                            height="25"
-                            width="25"
-                            className="dark:invert"
-                        />
-                    </Button>
+                            <Image
+                                src={icon.thumbnail}
+                                alt="arrow-down"
+                                height="25"
+                                width="25"
+                                className="dark:invert"
+                            />
+                        </Button>
                     </Link>
                 ))}
             </div>

@@ -9,12 +9,45 @@ import {
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { toast } from "./ui/use-toast";
+import axios, { AxiosError } from 'axios';
+import { Loader2 } from "lucide-react";
 
 export function Contact() {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+    const [formData, setFormData] = React.useState({
+        fname: "",
+        lname: "",
+        email: "",
+        msg: "",
+    });
+    const [isSending, setIsSending] = React.useState(false);
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Form submitted");
+        setIsSending(true);
+        const response = await axios.post('/api/send-message', formData);
+        console.log(response.data)
+        toast({
+            title: response.data.success ? 'Success' : 'Failed',
+            description: response.data.message,
+            variant: response.data.success ? 'default' : 'destructive'
+        });
+        setFormData({
+            fname: "",
+            lname: "",
+            email: "",
+            msg: "",
+        });
+        setIsSending(false);
     };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    }
+
     return (
         <div className="py-10 px-10" id="contact">
             <div className='flex flex-col items-center justify-center'>
@@ -36,30 +69,33 @@ export function Contact() {
                         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
                             <LabelInputContainer>
                                 <Label htmlFor="firstname">First name</Label>
-                                <Input id="firstname" placeholder="Abc" type="text" />
+                                <Input id="firstname" value={formData.fname} onChange={handleChange} name="fname" placeholder="Abc" type="text" />
                             </LabelInputContainer>
                             <LabelInputContainer>
                                 <Label htmlFor="lastname">Last name</Label>
-                                <Input id="lastname" placeholder="Xyz" type="text" />
+                                <Input id="lastname" value={formData.lname} onChange={handleChange} name="lname" placeholder="Xyz" type="text" />
                             </LabelInputContainer>
                         </div>
                         <LabelInputContainer className="mb-4">
                             <Label htmlFor="email">Email Address</Label>
-                            <Input id="email" placeholder="abcxyz@fc.com" type="email" />
+                            <Input id="email" value={formData.email} onChange={handleChange} name="email" placeholder="abcxyz@fc.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" type="email" />
                         </LabelInputContainer>
                         <LabelInputContainer className="mb-4">
                             <Label htmlFor="mesage">Message</Label>
-                            <Textarea id="mesage" placeholder="Hello, how are you" />
+                            <Textarea id="mesage" value={formData.msg} onChange={handleChange} name="msg" placeholder="Hello, how are you" />
                         </LabelInputContainer>
 
-                        <button
+                        <button disabled={!isSending && !(formData.fname && formData.lname && formData.email && formData.msg)}
                             className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                             type="submit"
                         >
-                            Send
+                            {isSending ? (
+                                <>
+                                <Loader2 className='h-6 w-6 animate-spin mx-auto' />
+                                </>
+                            ) : ("Send")}
                             <BottomGradient />
                         </button>
-
                     </form>
                 </div>
             </div>

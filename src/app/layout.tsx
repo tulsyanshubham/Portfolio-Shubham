@@ -4,7 +4,7 @@ import "./globals.css";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import {Navicons} from '@/assets/assets'
 // import { useState } from "react";
-
+import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -26,6 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <FloatingNav navItems={Navicons} />
         {children}
+        <Toaster />
       </body>
     </html>
   );
