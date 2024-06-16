@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "./button";
 import { Tech } from "@/data/tech";
+import {Icons} from "@/assets/assets";
 
 export const HeroParallax = ({
     products,
@@ -188,8 +189,18 @@ export const Header = () => {
             <p className="max-w-2xl text-base md:text-xl mt-2 md:mt-8 dark:text-neutral-200 text-center z-10">
                 Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving.
             </p>
-            <div className="flex items-center justify-center mt-2">
-                hello
+            <div className="flex items-center justify-center mt-2 z-10">
+                {Icons.map((icon) => (
+                    <Button className="rounded-full p-6 mx-2 bg-transparent" variant="outline">
+                    <Image
+                        src={icon}
+                        alt="arrow-down"
+                        height="25"
+                        width="25"
+                        className="dark:invert"
+                    />
+                </Button>
+                ))}
             </div>
             <h2 className="text-xl md:text-3xl text-teal-600 font-semibold tracking-wide uppercase text-center mt-10 z-10">
                 Here's what I have learned so far
