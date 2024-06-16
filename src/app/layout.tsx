@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import {Navicons} from '@/assets/assets'
+// import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Shubham Tulsyan",
@@ -14,9 +18,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  // const [darkmode, setDarkmode] = useState(false);
+
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <FloatingNav navItems={Navicons} />
+        {children}
+      </body>
     </html>
   );
 }
