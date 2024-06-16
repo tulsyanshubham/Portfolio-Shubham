@@ -16,8 +16,8 @@ export default function Timeline() {
             </h2>
           </div>
           {TimelineData.map((timeline) => (
-              <div className="my-5">
-            <BackgroundGradient className="rounded-[22px] w-xl p-5 px-7 sm:p-10 bg-white dark:bg-zinc-900 flex flex-col shadow-lg">
+            <div className="my-5">
+              <BackgroundGradient className="rounded-[22px] w-xl p-5 px-7 sm:p-10 bg-white dark:bg-zinc-900 flex flex-col shadow-lg">
                 <p className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100">
                   {timeline.title}
                 </p>
@@ -33,8 +33,8 @@ export default function Timeline() {
                 <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1">
                   {timeline.score < 10 ? "CGPA till now:" : "Percentage"} <span className="font-semibold text-gray-700 dark:text-gray-200">{timeline.score}</span>
                 </p>
-            </BackgroundGradient>
-              </div>
+              </BackgroundGradient>
+            </div>
           ))}
 
         </div>

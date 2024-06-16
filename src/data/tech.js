@@ -8,16 +8,16 @@ export const Tech = [
     thumbnail: "https://i.ibb.co/c8FbM8Y/expo.png",
   },
   {
-    title: "Expres",
-    thumbnail: "https://i.ibb.co/SwQC1vF/express.png",
+    title: "C++",
+    thumbnail: "https://i.ibb.co/R7QZfCt/c.png",
   },
   {
     title: "Typescript",
     thumbnail: "https://i.ibb.co/G9vx6Cs/Typescript.png",
   },
   {
-    title: "Git",
-    thumbnail: "https://i.ibb.co/jD6vyDC/git.png",
+    title: "Vite.js",
+    thumbnail: "https://i.ibb.co/5xVm5ST/vite.png",
   },
   {
     title: "Github",
@@ -56,15 +56,15 @@ export const Tech = [
     thumbnail: "https://i.ibb.co/J20zvHT/tailwind.png",
   },
   {
-    title: "Vite.js",
-    thumbnail: "https://i.ibb.co/5xVm5ST/vite.png",
-  },
-  {
-    title: "C++",
-    thumbnail: "https://i.ibb.co/R7QZfCt/c.png",
-  },
-  {
     title: "Postman",
     thumbnail: "https://i.ibb.co/JQtjQvz/postman.webp",
   },
+  {
+    title: "Expres",
+    thumbnail: "https://i.ibb.co/SwQC1vF/express.png",
+  },
+  // {
+  //   title: "Git",
+  //   thumbnail: "https://i.ibb.co/jD6vyDC/git.png",
+  // },
 ];

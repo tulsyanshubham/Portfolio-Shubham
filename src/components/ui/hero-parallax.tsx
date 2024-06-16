@@ -9,6 +9,18 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { FlipWords } from "./flip-words";
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
+import { Button } from "./button";
+import { Tech } from "@/data/tech";
 
 export const HeroParallax = ({
     products,
@@ -66,17 +78,17 @@ export const HeroParallax = ({
     );
     const translateY = innerWidth > 700 ?
         useSpring(
-            useTransform(scrollYProgress, [0, 0.2], [-700, 300]),
+            useTransform(scrollYProgress, [0, 0.2], [-750, 200]),
             springConfig
         ) :
         useSpring(
-            useTransform(scrollYProgress, [0, 0.2], [-500, 0]),
+            useTransform(scrollYProgress, [0, 0.2], [-550, 0]),
             springConfig
         );
     return (
         <div
             ref={ref}
-            className="h-[150vh] md:h-[270vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            className="h-[155vh] md:h-[270vh] pt-40 pb-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
         >
             <Header />
             <motion.div
@@ -115,7 +127,7 @@ export const HeroParallax = ({
                         />
                     ))}
                 </motion.div>
-                <motion.div className="flex flex-row space-x-10 md:space-x-20 ">
+                {innerWidth < 700 ? (<motion.div className="flex flex-row space-x-10 md:space-x-20 ">
                     {fourthRow.map((product) => (
                         <ProductCard
                             product={product}
@@ -123,8 +135,42 @@ export const HeroParallax = ({
                             key={product.title}
                         />
                     ))}
-                </motion.div>
+                </motion.div>) : ""}
             </motion.div>
+            <div className="z-10 absolute bottom-0 right-[33%] sm:right-[46%]">
+                <Drawer>
+                    <DrawerTrigger>
+                        <button className="p-[3px] relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+                            <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                                View All
+                            </div>
+                        </button>
+                    </DrawerTrigger>
+                    <DrawerContent className="pb-5">
+                        <DrawerHeader>
+                            <DrawerTitle className="text-center text-2xl sm:text-4xl">My Bagpack</DrawerTitle>
+                            <DrawerDescription className="text-sm text-center sm:text-base">Here's what I have learnt so far</DrawerDescription>
+                        </DrawerHeader>
+                        <div className="flex flex-wrap items-center justify-center">
+                            {Tech.map((tech) => (
+                                <Image
+                                    src={tech.thumbnail}
+                                    alt={tech.title}
+                                    height="50"
+                                    width="50"
+                                    className="m-4"
+                                />
+                            ))}
+                        </div>
+                        <DrawerFooter>
+                            <DrawerClose>
+                                <Button variant="outline">Cancel</Button>
+                            </DrawerClose>
+                        </DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+            </div>
         </div>
     );
 };
@@ -142,12 +188,12 @@ export const Header = () => {
             <p className="max-w-2xl text-base md:text-xl mt-2 md:mt-8 dark:text-neutral-200 text-center z-10">
                 Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving.
             </p>
+            <div className="flex items-center justify-center mt-2">
+                hello
+            </div>
             <h2 className="text-xl md:text-3xl text-teal-600 font-semibold tracking-wide uppercase text-center mt-10 z-10">
-                Here's what I have learned and built so far.
+                Here's what I have learned so far
             </h2>
-            <p>
-
-            </p>
         </div>
     );
 };
@@ -177,10 +223,10 @@ export const ProductCard = ({
                 src={product.thumbnail}
                 height="600"
                 width="600"
-                className="object-contain object-left-top absolute h-full w-full inset-0 p-4"
+                className="object-contain object-left-top absolute h-full w-full inset-0 p-4 hover:opacity-50"
                 alt={product.title}
             />
-            <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 group-hover/product:backdrop-blur-md dark:group-hover/product:bg-black dark:group-hover/product:opacity-80 bg-white/30 pointer-events-none"></div>
+            <div className="absolute inset-0 h-full w-full opacity-0 bg-white/30 pointer-events-none"></div>
 
             <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-xl sm:text-4xl text-black dark:text-white">
                 {product.title}
