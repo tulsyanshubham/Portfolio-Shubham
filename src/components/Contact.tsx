@@ -16,7 +16,7 @@ export function Contact() {
         console.log("Form submitted");
     };
     return (
-        <div className="py-20 px-10">
+        <div className="py-10 px-10" id="contact">
             <div className='flex flex-col items-center justify-center'>
                 <div className='mb-3'>
                     <h2 className="text-4xl sm:text-5xl font-bold text-center">Contact Me</h2>

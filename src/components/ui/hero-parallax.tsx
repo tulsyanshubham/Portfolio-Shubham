@@ -21,7 +21,8 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "./button";
 import { Tech } from "@/data/tech";
-import {Icons} from "@/assets/assets";
+import { Icons } from "@/assets/assets";
+import Link from "next/link";
 
 export const HeroParallax = ({
     products,
@@ -89,7 +90,7 @@ export const HeroParallax = ({
     return (
         <div
             ref={ref}
-            className="h-[155vh] md:h-[270vh] pt-40 pb-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+            className="h-[157vh] md:h-[270vh] pt-40 pb-10 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]" id="home"
         >
             <Header />
             <motion.div
@@ -141,12 +142,12 @@ export const HeroParallax = ({
             <div className="z-10 absolute bottom-0 right-[33%] sm:right-[46%]">
                 <Drawer>
                     <DrawerTrigger>
-                        <button className="p-[3px] relative">
+                        <div className="p-[3px] relative">
                             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
                             <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
                                 View All
                             </div>
-                        </button>
+                        </div>
                     </DrawerTrigger>
                     <DrawerContent className="pb-5">
                         <DrawerHeader>
@@ -187,19 +188,21 @@ export const Header = () => {
                 <FlipWords words={words} /> <br />
             </h2>
             <p className="max-w-2xl text-base md:text-xl mt-2 md:mt-8 dark:text-neutral-200 text-center z-10">
-                Based in Bengaluru with a strong foundation in technical skills and a passion for problem-solving.
+                Based in Bangalore with a strong foundation in technical skills and a passion for problem-solving.
             </p>
             <div className="flex items-center justify-center mt-2 z-10">
                 {Icons.map((icon) => (
-                    <Button className="rounded-full p-6 mx-2 bg-transparent" variant="outline">
-                    <Image
-                        src={icon}
-                        alt="arrow-down"
-                        height="25"
-                        width="25"
-                        className="dark:invert"
-                    />
-                </Button>
+                    <Link href={icon.url} key={icon.title} target="_blank">
+                        <Button className="rounded-full p-6 mx-2 bg-transparent" variant="outline">
+                        <Image
+                            src={icon.thumbnail}
+                            alt="arrow-down"
+                            height="25"
+                            width="25"
+                            className="dark:invert"
+                        />
+                    </Button>
+                    </Link>
                 ))}
             </div>
             <h2 className="text-xl md:text-3xl text-teal-600 font-semibold tracking-wide uppercase text-center mt-10 z-10">

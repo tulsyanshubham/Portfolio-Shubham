@@ -2,13 +2,13 @@ export const ProjectsArr = [
     {
         title: "TipyDo",
         description: "An application to pay Tip to miltiple staff through UPI with a single scan.",
-        imageUrl: "https://i.ibb.co/RDY7SZ6/tipydo.png",
+        imageUrl: "https://i.ibb.co/f0mhbMM/tipydo.png",
         url: "https://tipydo.onrender.com/"
     },
     {
         title: "Anonymous Message",
         description: "A platform to send and receive anonymous messages securely.",
-        imageUrl: "https://i.ibb.co/qgNLqWW/anonymous-message.png",
+        imageUrl: "https://i.ibb.co/LNBDC09/anonymous-message.png",
         url: "https://anonymous-message-theta.vercel.app"
     },
     {
@@ -20,25 +20,25 @@ export const ProjectsArr = [
     {
         title: "Music Academy",
         description: "A UI online music learning platform offering various courses and tutorials.",
-        imageUrl: "https://i.ibb.co/26zDG9F/music-academy.png",
+        imageUrl: "https://i.ibb.co/HYTxHLW/music-academy.png",
         url: "https://tulsyanshubham.github.io/Music-Academy/"
     },
     {
         title: "The Cosmonaut",
         description: "A space-themed website providing information about space exploration.",
-        imageUrl: "https://i.ibb.co/5LFG7tz/the-cosmonaut.png",
+        imageUrl: "https://i.ibb.co/0YX9YV9/the-cosmonaut.png",
         url: "https://tulsyanshubham.github.io/The-Cosmonaut/"
     },
     {
         title: "WriteEase",
         description: "A UI for user-friendly writing assistant tool to enhance your writing productivity.",
-        imageUrl: "https://i.ibb.co/KzkXvbX/writeease.png",
+        imageUrl: "https://i.ibb.co/MPxPgN7/writeease.png",
         url: "https://writeease.onrender.com/"
     },
     {
         title: "News Rabbit",
         description: "A news aggregator that delivers the latest headlines from various sources.",
-        imageUrl: "https://i.ibb.co/g96GY3S/news-rabbit.png",
+        imageUrl: "https://i.ibb.co/F4dStzj/news-rabbit.png",
         url: "https://github.com/tulsyanshubham/News-Rabbit"
     },
     {

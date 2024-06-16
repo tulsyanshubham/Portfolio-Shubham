@@ -6,7 +6,7 @@ import { BackgroundGradient } from './ui/background-gradient'
 
 export default function Timeline() {
   return (
-    <div className='mx-2 my-10'>
+    <div className='mx-2 my-10' id='timeline'>
       <TracingBeam className="px-6">
         <div className='flex flex-col items-center justify-center ps-3 py-7'>
           <div className='mb-10'>

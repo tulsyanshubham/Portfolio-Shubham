@@ -1,4 +1,5 @@
 import { Contact } from '@/components/Contact'
+import Footer from '@/components/Footer'
 import { Home } from '@/components/Home'
 import Projects from '@/components/Projects'
 import Timeline from '@/components/Timeline'
@@ -11,6 +12,7 @@ export default function page() {
       <Projects />
       <Timeline />
       <Contact />
+      <Footer />
     </div>
   )
 }
